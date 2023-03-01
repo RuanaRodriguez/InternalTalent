@@ -14,13 +14,16 @@ namespace InternalTalent
 
             while (opcao != 5)
             {
-                Console.WriteLine("Sejam bem-vindos ao Internal Talent\n");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Sejam bem-vindos(a) ao Internal Talent\n");
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("1 - Adicionar Talento");
                 Console.WriteLine("2 - Listar Talentos");
                 Console.WriteLine("3 - Atualizar Talentos");
                 Console.WriteLine("4 - Remover Talentos");
                 Console.WriteLine("5 - Sair\n");
-
+                Console.ResetColor();
                 opcao = int.Parse(Console.ReadLine());
 
 
@@ -51,10 +54,18 @@ namespace InternalTalent
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Opção inválida\n");
                         Console.ResetColor();
+                        CallbackMenu();
                         break;
 
                 }
             }
+        }
+
+        public static void CallbackMenu()
+        {
+            Console.WriteLine("\nPressione ENTER, para voltar ao Menu principal...");
+            Console.ReadKey();
+            Console.Clear();
         }
 
     }

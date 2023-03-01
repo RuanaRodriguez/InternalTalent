@@ -50,23 +50,31 @@ namespace InternalTalent
         public static void Listar()
         {
             Console.Clear();
-            Console.WriteLine("Lista de talentos:");
+            Console.WriteLine("Lista de talentos:\n");
 
             if (talento.Count == null || !talento.Any())
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Não existe nenhum talento dentro da lista.\n");
-                return;
+                Console.ResetColor();
+                Console.WriteLine("\nPressione ENTER, para voltar ao Menu principal...");
+                Console.ReadKey();
+                Console.Clear();
+
             }
+
 
             foreach (Talentos talentos in talento)
             {
-                Console.WriteLine($" ID: {talentos.Id}, " +
-                                 $"O nome é: {talentos.Nome}, " +
-                                 $" O cargo é: {talentos.Cargo}," +
-                                 $" A idade é: {talentos.Idade}," +
-                                 $" O nome do CA é: {talentos.CA} ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"ID: {talentos.Id} | " +
+                                 $"O nome é: {talentos.Nome} | " +
+                                 $"O cargo é: {talentos.Cargo} | " +
+                                 $"A idade é: {talentos.Idade} | " +
+                                 $"O nome do CA é: {talentos.CA} ");
+                Console.ResetColor();
             }
-            Console.WriteLine("Pressione ENTER, para voltar ao Menu principal...");
+            Console.WriteLine("\nPressione ENTER, para voltar ao Menu principal...");
             Console.ReadKey();
             Console.Clear();
 
@@ -82,30 +90,39 @@ namespace InternalTalent
 
             if (talentos == null)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Não existe nenhum usuário com este ID");
+                Console.ResetColor();
             }
             else
             {
-                Console.WriteLine($"Pessoa encontrada com N° de ID: {talentos.Id}, e nome: {talentos.Nome}");
+                Console.WriteLine($"Pessoa encontrada com N° de ID: {talentos.Id}, e nome: {talentos.Nome}\n");
 
-                Console.Write("Informe o nome correto:");
+                Console.WriteLine("Informe o nome correto:");
                 string novoNomeTalento = Console.ReadLine();
                 talentos.Nome = novoNomeTalento;
 
-                Console.Write("Informe o cargo correto:");
+                Console.WriteLine("Informe o cargo correto:");
                 string novoCargo = Console.ReadLine();
                 talentos.Cargo = novoCargo;
 
-                Console.Write("Informe a idade correta:");
+                Console.WriteLine("Informe a idade correta:");
                 int novaIdade = int.Parse(Console.ReadLine());
                 talentos.Idade = novaIdade;
 
-                Console.Write("Informe o nome correto do seu CA:");
+                Console.WriteLine("Informe o nome correto do seu CA:");
                 string novoCA = Console.ReadLine();
                 talentos.CA = novoCA;
 
-                Console.WriteLine("Talento atualizado com sucesso!");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\nTalento atualizado com sucesso!");
+                Console.ResetColor();
+
+                Console.WriteLine("Pressione ENTER, para voltar ao Menu principal...");
+                Console.ReadKey();
+                Console.Clear();
             }
+
         }
 
         public static void Remover()
@@ -139,7 +156,9 @@ namespace InternalTalent
                 {
                     case 1:
                         talento.Remove(talentos);
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("ID removido com sucesso!");
+                        Console.ResetColor();
                         break;
                     case 2:
                         Console.WriteLine("Redirecionando para o Menu...");
