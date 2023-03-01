@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InternalTalent
 {
-    internal class Menu
+    public class Menu
     {
         public static void MenuPrincipal()
         {
@@ -15,17 +15,16 @@ namespace InternalTalent
             while (opcao != 5)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Sejam bem-vindos(a) ao Internal Talent\n");
+                Console.WriteLine("Sejam Bem-Vindos(a) ao Internal Talent\n");
                 Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("1 - Adicionar Talento");
+                Console.WriteLine("1 - Adicionar Talentos");
                 Console.WriteLine("2 - Listar Talentos");
                 Console.WriteLine("3 - Atualizar Talentos");
                 Console.WriteLine("4 - Remover Talentos");
                 Console.WriteLine("5 - Sair\n");
                 Console.ResetColor();
                 opcao = int.Parse(Console.ReadLine());
-
 
                 switch (opcao)
                 {
@@ -45,7 +44,7 @@ namespace InternalTalent
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("\nO programa está sendo encerrado, até logo...");
                         Console.ResetColor();
-                        Console.ReadKey();
+                        Thread.Sleep(1000);
                         Environment.Exit(0);
                         break;
 
@@ -56,14 +55,13 @@ namespace InternalTalent
                         Console.ResetColor();
                         CallbackMenu();
                         break;
-
                 }
             }
         }
 
         public static void CallbackMenu()
         {
-            Console.WriteLine("\nPressione ENTER, para voltar ao Menu principal...");
+            Console.WriteLine("\nPressione ENTER, para voltar ao Menu Principal...");
             Console.ReadKey();
             Console.Clear();
         }

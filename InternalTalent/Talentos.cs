@@ -32,21 +32,19 @@ namespace InternalTalent
             Console.Clear();
             Console.WriteLine("Registre um Id para esse usuário:");
             talentos.Id = int.Parse(Console.ReadLine());
-            Console.WriteLine("Cadastre seu nome:");
+            Console.WriteLine("Informe o seu Nome:");
             talentos.Nome = Console.ReadLine();
-            Console.WriteLine("Informe seu cargo");
+            Console.WriteLine("Informe o seu Cargo (EX: Full-Stack Developer):");
             talentos.Cargo = Console.ReadLine();
-            Console.WriteLine("Informe sua idade:");
+            Console.WriteLine("Informe a sua idade:");
             talentos.Idade = int.Parse(Console.ReadLine());
-            Console.WriteLine("Informe o nome do(a) seu CA:");
+            Console.WriteLine("Informe o Nome do(a) seu Career Advisor:");
             talentos.CA = Console.ReadLine();
-
 
             talento.Add(talentos);
             Console.Clear();
             Menu.MenuPrincipal();
         }
-
         public static void Listar()
         {
             Console.Clear();
@@ -55,31 +53,23 @@ namespace InternalTalent
             if (talento.Count == null || !talento.Any())
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Não existe nenhum talento dentro da lista.\n");
+                Console.WriteLine("Nenhum usuário foi encontrado!.\n");
                 Console.ResetColor();
-                Console.WriteLine("\nPressione ENTER, para voltar ao Menu principal...");
-                Console.ReadKey();
-                Console.Clear();
-
             }
-
 
             foreach (Talentos talentos in talento)
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"ID: {talentos.Id} | " +
-                                 $"O nome é: {talentos.Nome} | " +
-                                 $"O cargo é: {talentos.Cargo} | " +
-                                 $"A idade é: {talentos.Idade} | " +
-                                 $"O nome do CA é: {talentos.CA} ");
+                                 $"Nome: {talentos.Nome} | " +
+                                 $"Cargo: {talentos.Cargo} | " +
+                                 $"Idade: {talentos.Idade} | " +
+                                 $"Career Advisor: {talentos.CA} ");
                 Console.ResetColor();
+                
             }
-            Console.WriteLine("\nPressione ENTER, para voltar ao Menu principal...");
-            Console.ReadKey();
-            Console.Clear();
-
+            Menu.CallbackMenu();
         }
-
         public static void Atualizar()
         {
             Console.Clear();
@@ -91,40 +81,36 @@ namespace InternalTalent
             if (talentos == null)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Não existe nenhum usuário com este ID");
+                Console.WriteLine("Nenhum usuário com esse ID foi encontrado!");
                 Console.ResetColor();
+                Menu.CallbackMenu();
             }
             else
             {
-                Console.WriteLine($"Pessoa encontrada com N° de ID: {talentos.Id}, e nome: {talentos.Nome}\n");
+                Console.WriteLine($"Pessoa encontrada com N° de ID: {talentos.Id}, e Nome: {talentos.Nome}\n");
 
-                Console.WriteLine("Informe o nome correto:");
+                Console.WriteLine("Informe o Nome correto:");
                 string novoNomeTalento = Console.ReadLine();
                 talentos.Nome = novoNomeTalento;
 
-                Console.WriteLine("Informe o cargo correto:");
+                Console.WriteLine("Informe o Cargo correto:");
                 string novoCargo = Console.ReadLine();
                 talentos.Cargo = novoCargo;
 
-                Console.WriteLine("Informe a idade correta:");
+                Console.WriteLine("Informe a Idade correta:");
                 int novaIdade = int.Parse(Console.ReadLine());
                 talentos.Idade = novaIdade;
 
-                Console.WriteLine("Informe o nome correto do seu CA:");
+                Console.WriteLine("Informe o nome correto do seu Career Advisor:");
                 string novoCA = Console.ReadLine();
                 talentos.CA = novoCA;
 
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("\nTalento atualizado com sucesso!");
+                Console.WriteLine("\nUsuário atualizado com sucesso!");
                 Console.ResetColor();
-
-                Console.WriteLine("Pressione ENTER, para voltar ao Menu principal...");
-                Console.ReadKey();
-                Console.Clear();
+                Menu.CallbackMenu();
             }
-
         }
-
         public static void Remover()
         {
             Console.Clear();
@@ -148,7 +134,6 @@ namespace InternalTalent
                                  $"A idade é: {talentos.Idade}\n" +
                                  $"O nome do CA é: {talentos.CA}\n");
 
-
                 Console.WriteLine("Tem certeza que deseja remover?\n 1 - Sim | 2 - Não ");
                 int opcao = int.Parse(Console.ReadLine());
 
@@ -167,13 +152,11 @@ namespace InternalTalent
                         Menu.MenuPrincipal();
                         break;
                 }
-
             }
+
             Console.WriteLine("\nPressione ENTER, para voltar ao Menu principal...");
             Console.ReadKey();
             Console.Clear();
-
         }
-
     }
 }
